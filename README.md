@@ -5,3 +5,4 @@ Spring Data JPA with Hibernate application source code.
 - Query Methods or Finder Methods
 - JPQL and Native SQL Queries Using @Query annotation - **[JPQLQueriesTests]**
 - Creating Named JPQL and Named SQL Queries - **[NamedQueriesTests]**
+- Pagination and Sorting - **[PagingAndSortingTests]**
