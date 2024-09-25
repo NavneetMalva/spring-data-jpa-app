@@ -2,6 +2,8 @@ package com.springdatajpa.springboot.repository;
 
 import com.springdatajpa.springboot.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -100,4 +102,36 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findFirst2ByOrderByNameAsc();
     List<Product> findFirst2ByOrderByPriceDesc();
 
+    // Define JPQL query using @Query annotation with index or position parameters
+    // JPQL used Entity name - Product
+    @Query("SELECT p from Product p where p.name = ?1 or p.description = ?2")
+    Product findByNameOrDescriptionJPQL(String name, String description);
+
+    // Define JPQL query using @Query annotation with Named parameters
+    @Query("SELECT p from Product p where p.name=:name OR p.description=:description")
+    List<Product> findByNameOrDescriptionJPQLNamedParam(@Param("name") String name,@Param("description") String description);
+
+    // Define Native SQL query using @Query annotation with index or position parameters
+    // SQL query used Table name - products
+    @Query(value = "SELECT * from products p where p.name = ?1 or p.description = ?2", nativeQuery = true)
+    List<Product> findByNameOrDescriptionIndexNative(String name, String description);
+
+    // Define Native SQL query using @Query annotation with Named parameters
+    @Query(value = "SELECT * from products p where p.name=:name or p.description=:desc", nativeQuery = true)
+    List<Product> findByNameOrDescriptionNamedParamNative(@Param("name") String name, @Param("desc") String description);
+
+    // Define Named JPQL Query
+    //Product findByPrice(BigDecimal price); // Index Query
+    Product findByPrice(@Param("price") BigDecimal price); // Named parameter Query
+
+    List<Product> findAllOrderByNameDesc();
+
+    // Define Named native SQL query
+    @Query(nativeQuery = true)
+    Product findByDescription(String description);
+
+    // Define Named native SQL query with Named Parameter
+    @Query(nativeQuery = true)
+    Product findByDescriptionNamedParam(@Param("description") String description);
+    List<Product> findAllOrderByNameASC();
 }
