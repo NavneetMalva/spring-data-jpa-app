@@ -17,4 +17,9 @@ public class Address {
     private String country;
     private String zipCode;
 
+    // This will be owner side for OneToOne Bidirectional Mapping between Order and Address
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="order_id", referencedColumnName = "id")  // will assign a custom name to foreign key
+    private Order order;
+
 }

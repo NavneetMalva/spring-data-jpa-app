@@ -28,8 +28,8 @@ public class Order {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="billing_address_id", referencedColumnName = "id")  // will assign a custom name to foreign key
+    // This will be child side for OneToOne Bidirectional Mapping between Order and Address
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "order")
     private Address billingAddress;
 
 }
