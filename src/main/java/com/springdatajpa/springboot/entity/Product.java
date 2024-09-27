@@ -97,6 +97,17 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
+    /**
+     * many side holds the foreign key
+     * Owning side: The side that contains the @JoinColumn annotation (or where the foreign key is stored)
+     * and controls the mapping of the relationship.
+     * the Product entity (child side) would be the owning side of the relationship,
+     * because it holds the foreign key that refers to Category
+     */
+    @ManyToOne()
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private ProductCategory category;
+
     // Using lombok library so we don't need to create getter & setters each time.
     /*
     public Long getId() {
