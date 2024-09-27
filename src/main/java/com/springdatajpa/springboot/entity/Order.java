@@ -61,8 +61,12 @@ public class Order {
     * @ManyToMany - LAZY
     * */
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="order_id", referencedColumnName = "id")
+    // Bidirectional mapping
+    /**
+     * mappedBy = "order" means this side (the Order entity) is the inverse side of the relationship,
+     * and the foreign key is controlled by the order field in the OrderItem entity.
+    */
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy="order")
     private Set<OrderItem> orderItems = new HashSet<>();
 
     public BigDecimal getTotalAmount(){

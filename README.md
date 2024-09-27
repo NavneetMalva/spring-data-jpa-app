@@ -9,3 +9,4 @@ Spring Data JPA with Hibernate application source code.
 - @OneToOne Unidirectional Mapping b/w Order and Address
 - @OneToOne Bidirectional Mapping b/w Address and Order
 - @OneToMany Unidirectional Mapping from Order to OrderItem
+- @OneToMany Bidirectional Mapping b/w Order and OrderItem
