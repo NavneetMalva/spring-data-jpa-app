@@ -1,9 +1,12 @@
 package com.springdatajpa.springboot.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "addresses")
 public class Address {
@@ -16,6 +19,18 @@ public class Address {
     private String state;
     private String country;
     private String zipCode;
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", country='" + country + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                '}';
+    }
 
     // This will be owner side for OneToOne Bidirectional Mapping between Order and Address
     @OneToOne(cascade = CascadeType.ALL)

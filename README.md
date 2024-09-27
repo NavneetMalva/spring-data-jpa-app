@@ -6,3 +6,6 @@ Spring Data JPA with Hibernate application source code.
 - JPQL and Native SQL Queries Using @Query annotation - **[JPQLQueriesTests]**
 - Creating Named JPQL and Named SQL Queries - **[NamedQueriesTests]**
 - Pagination and Sorting - **[PagingAndSortingTests]**
+- @OneToOne Unidirectional Mapping b/w Order and Address
+- @OneToOne Bidirectional Mapping b/w Address and Order
+- @OneToMany Unidirectional Mapping from Order to OrderItem
