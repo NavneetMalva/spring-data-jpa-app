@@ -12,3 +12,4 @@ Spring Data JPA with Hibernate application source code.
 - @OneToMany Bidirectional Mapping b/w Order and OrderItem
 - @OneToMany Bidirectional Mapping b/w Product and ProductCategory
 - @ManyToMany Unidirectional Mapping b/w User and Role
+- @ManyToMany Bidirectional Mapping b/w User and Role

@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -22,5 +25,13 @@ public class Role {
                 "name='" + name + '\'' +
                 '}';
     }
+
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    }, fetch = FetchType.EAGER,
+    mappedBy = "roles")
+    private Set<User> users = new HashSet<>();
+
 }
 
